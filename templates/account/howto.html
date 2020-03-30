@@ -1,0 +1,61 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "How to use" %}{% endblock %}
+
+{% block content %}
+  <main>
+    <div class="container">
+      <section class="mb-4">
+        <div class="row wow fadeIn">
+          <div class='col-6 offset-3'>
+          <h1>How to use?</h1>
+
+          {% get_providers as socialaccount_providers %}
+
+          {% if socialaccount_providers %}
+          <p>{% blocktrans with site.name as site_name %}Please sign in with one
+          of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+          for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+          <div class="socialaccount_ballot">
+
+            <ul class="socialaccount_providers">
+              {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+            </ul>
+
+            <div class="login-or">{% trans 'or' %}</div>
+
+          </div>
+
+          {% include "socialaccount/snippets/login_extra.html" %}
+
+          {% else %}
+          <p>{% blocktrans %}1) Check your email daily (Which already registered to The Photo Guys before)
+          2) The email will contain the unique ID of your photos (Individual and Group)
+          3) Go and copy paste the selected ID at search bar on the home page
+          4) Take a look which is a right picture
+          5) Select any photos which you want to buy and add to cart
+          6) To do all this stuff, the students need to do the registration and have an account first
+          7) Once done the payment, the picture will be given to the students based on student's option
+          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+          {% endif %}
+
+          {% comment %} <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <a class="btn btn-default" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+          </form> {% endcomment %}
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+{% endblock %}
