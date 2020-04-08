@@ -46,7 +46,7 @@
             </a>
           </li>
           {% else %}
-          <li class="nav-item">
+          {% comment %} <li class="nav-item">
             <a class="nav-link waves-effect" href="{% url 'account_login' %}">
               <span class="clearfix d-none d-sm-inline-block"> About </span>
             </a>
@@ -60,17 +60,17 @@
             <a class="nav-link waves-effect" href="{% url 'account_login' %}">
               <span class="clearfix d-none d-sm-inline-block"> Contact us </span>
             </a>
-          </li>
+          </li> {% endcomment %}
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{% url 'account_login' %}">
               <span class="clearfix d-none d-sm-inline-block"> Login </span>
             </a>
           </li>
-          {% comment %} <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link waves-effect" href="{% url 'account_signup' %}">
-              <span class="clearfix d-none d-sm-inline-block"> Signup </span>
+              <span class="clearfix d-none d-sm-inline-block"> Register </span>
             </a>
-          </li> {% endcomment %}
+          </li>
           {% endif %}
         </ul>
       </div>
