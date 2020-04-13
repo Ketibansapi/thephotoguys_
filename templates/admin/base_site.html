@@ -1,11 +1,15 @@
 {% extends 'admin/base.html' %}
+
 {% load static %}
 
 {% block branding %}
+
  <h1 id="head">
     TPGS administration
  </h1>
 {% endblock %}
 {% block extrastyle %}
+
+    <link rel="shortcut icon" href="{% static 'img/camera.png' %}">
     <link rel="stylesheet" href="{% static 'css/admin.css' %}">
 {% endblock %}
